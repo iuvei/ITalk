@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+import Login from './screens/login'
+import Register from './screens/register'
 
 const HomeScreen = () => (
   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -15,11 +17,11 @@ const DetailsScreen = () => (
 );
 
 const RootNavigator = StackNavigator({
-  Home: {
-    screen: HomeScreen,
+  Login: {
+    screen: Login,
   },
-  Details: {
-    screen: DetailsScreen,
+  Register: {
+    screen: Register,
   },
 });
 

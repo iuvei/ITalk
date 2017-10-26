@@ -6,20 +6,20 @@
 
 import React, { Component } from 'react';
 import {
-  View,Text
+  View, Text
 } from 'react-native';
 import { Button, List } from 'antd-mobile';
-import Login from './src/login/login'
-export default class App extends Component{
-  constructor(props){
+import RootNavigator from './src/root'
+export default class App extends Component {
+  constructor(props) {
     super(props);
-    this.state={
+    this.state = {
 
     }
   }
   render() {
     return (
-      <View><Login/></View>
+      <RootNavigator />
 
     );
   }
