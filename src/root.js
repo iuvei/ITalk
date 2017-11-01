@@ -3,18 +3,7 @@ import { View, Text } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Login from './screens/login'
 import Register from './screens/register'
-
-const HomeScreen = () => (
-  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <Text>Home Screen</Text>
-  </View>
-);
-
-const DetailsScreen = () => (
-  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <Text>Details Screen</Text>
-  </View>
-);
+import ForgetPassword from './screens/forget_password'
 
 const RootNavigator = StackNavigator({
   Login: {
@@ -22,6 +11,9 @@ const RootNavigator = StackNavigator({
   },
   Register: {
     screen: Register,
+  },
+  ForgetPassword: {
+    screen: ForgetPassword,
   },
 });
 
