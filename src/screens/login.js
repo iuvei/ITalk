@@ -1,13 +1,25 @@
 import React, { Component } from 'react'
-
+import { List, ActionSheet, InputItem, Button } from 'antd-mobile';
 import {
-    FlatList, StyleSheet, Button, Text, View, TextInput
+    FlatList, StyleSheet, Text, View, TextInput
 } from 'react-native';
-import { NavBar, Icon, List } from 'antd-mobile';
 export default class Login extends Component {
     static navigationOptions = {
-        title: '登录',
-        headerTintColor: 'blue',
+        title: '添加或注册账号',
+
+        headerTitleStyle: {
+            alignSelf: 'center',
+            fontSize: 18,
+            color:'#fff',
+        }
+        ,
+        headerStyle: {
+            backgroundColor: 'rgb(16, 142, 233)'
+        },
+
+        // headerStyle:{
+        //     backgroundColor:rgb(16, 142, 233)
+        // }
     }
     constructor(props) {
         super(props);
@@ -16,20 +28,44 @@ export default class Login extends Component {
     log_in() {
 
     }
+    showActionSheet = () => {
+        const BUTTONS = ['找回密码', '短信验证码登录', '取消'];
+        ActionSheet.showActionSheetWithOptions({
+            options: BUTTONS,
+            cancelButtonIndex: BUTTONS.length - 1,
+            // title: 'title',
+            maskClosable: true,
+            'data-seed': 'logId',
+
+        },
+            (buttonIndex) => {
+                this.setState({ clicked: BUTTONS[buttonIndex] });
+            });
+    }
 
 
     render() {
+        const self = this;
         return (
             <View style={styles.container}>
-                <TextInput style={{ width: 100 + '%' }} placeholder="手机号/账号"></TextInput>
-                <TextInput style={{ width: 100 + '%' }} placeholder="密码"></TextInput>
-                <View style={{ width: 100 + '%', flexDirection: 'row', }}><Text style={{ width: 50 + '%', paddingLeft: 5 }}>忘记密码？</Text><Text style={{ width: 50 + '%', paddingRight: 5, textAlign: 'right' }}>注册</Text></View>
-                    <Button
-                        onPress={this.log_in}
-                        title="登录"
-                        color="#841584"
-                        accessibilityLabel="登录"
-                    /> 
+                <List>
+                    <InputItem
+                        clear
+                        placeholder="QQ号/手机/邮箱"
+                        ref={el => this.autoFocusInst = el}
+                    ></InputItem>
+                    <InputItem
+                        clear
+                        placeholder="密码"
+                        ref={el => this.customFocusInst = el}
+                    ></InputItem>
+                </List>
+                <Button style={{ marginLeft: 8, marginRight: 8, marginTop: 8 }} type="primary">登　录</Button>
+                <View style={{ width: 100 + '%', flexDirection: 'row', paddingTop: 5 }}>
+                    <Text onPress={self.showActionSheet} style={{ width: 50 + '%', paddingLeft: 8 }}>忘记密码？</Text>
+                    <Text style={{ width: 50 + '%', paddingRight: 8, textAlign: 'right' }}>新用户注册</Text>
+                </View>
+
             </View>
         );
     }
@@ -38,8 +74,8 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 2,
-        height:200,
-        width:100+'%'
+        width: 100 + '%',
+        top: 10
     },
     userName: {
         flexDirection: 'row',
