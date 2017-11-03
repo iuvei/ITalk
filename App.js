@@ -9,7 +9,7 @@ import {
   View, Text
 } from 'react-native';
 import { Button, List } from 'antd-mobile';
-import RootNavigator from './src/root'
+import RootNavigator from './src/root.js'
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -19,28 +19,8 @@ export default class App extends Component {
   }
   render() {
     return (
-      <RootNavigator />
-
+      <RootNavigator/>
     );
   }
 }
 
-// import React, {
-//   Component,
-// } from 'react';
-// import {
-//   DrawerLayoutAndroid, 
-//   ProgressBarAndroid, 
-//   Text 
-// } from 'react-native';
-
-// export default class App extends Component {
-//   render() {
-//     return (
-//       <DrawerLayoutAndroid
-//         renderNavigationView={() => <Text>React Native</Text>}>
-//         <ProgressBarAndroid />
-//       </DrawerLayoutAndroid>
-//     );
-//   }
-// }
