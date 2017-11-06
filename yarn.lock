@@ -98,6 +98,10 @@ ansi@^0.3.0, ansi@~0.3.1:
   version "0.3.1"
   resolved "http://registry.npm.taobao.org/ansi/download/ansi-0.3.1.tgz#0c42d4fb17160d5a9af1e484bace1c66922c1b21"
 
+antd-mobile-demo-data@^0.1.4:
+  version "0.1.4"
+  resolved "http://registry.npm.taobao.org/antd-mobile-demo-data/download/antd-mobile-demo-data-0.1.4.tgz#27237fd220fba1b906fa891cab480d80b05382e9"
+
 antd-mobile@^2.0.0:
   version "2.0.1"
   resolved "http://registry.npm.taobao.org/antd-mobile/download/antd-mobile-2.0.1.tgz#311bcb38cc15c26b01567efb7ed77d839fb11899"

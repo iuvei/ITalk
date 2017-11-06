@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "antd-mobile": "^2.0.0",
+    "antd-mobile-demo-data": "^0.1.4",
     "babel-core": "^6.26.0",
     "react": "16.0.0-beta.5",
     "react-dom": "^16.0.0",

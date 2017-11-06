@@ -42,6 +42,10 @@ export default class Login extends Component {
                if(buttonIndex===0){return navigate('ForgetPassword')}
             });
     }
+    //--------
+    login(){
+        
+    }
 
 
     render() {
@@ -62,7 +66,7 @@ export default class Login extends Component {
                         ref={el => this.customFocusInst = el}
                     ></InputItem>
                 </List>
-                <Button style={{ marginLeft: 8, marginRight: 8, marginTop: 8 }} type="primary">登　录</Button>
+                <Button onPress={this.login} style={{ marginLeft: 8, marginRight: 8, marginTop: 8 }} type="primary">登　录</Button>
                 <View style={{ width: 100 + '%', flexDirection: 'row', paddingTop: 5 }}>
                     <Text onPress={self.showActionSheet} style={{ width: 50 + '%', paddingLeft: 8 }}>忘记密码？</Text>
                     <Text onPress={() => navigate('Register')} style={{ width: 50 + '%', paddingRight: 8, textAlign: 'right' }}>新用户注册</Text>
