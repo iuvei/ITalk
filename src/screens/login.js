@@ -30,22 +30,24 @@ export default class Login extends Component {
     }
     showActionSheet = () => {
         const BUTTONS = ['找回密码', '短信验证码登录', '取消'];
+        const { navigate } = this.props.navigation;
         ActionSheet.showActionSheetWithOptions({
             options: BUTTONS,
             cancelButtonIndex: BUTTONS.length - 1,
-            // title: 'title',
-            maskClosable: true,
+            maskClosable: false,
             'data-seed': 'logId',
-
         },
             (buttonIndex) => {
-                this.setState({ clicked: BUTTONS[buttonIndex] });
+                
+               if(buttonIndex===0){return navigate('ForgetPassword')}
             });
     }
 
 
     render() {
         const self = this;
+
+        const { navigate } = this.props.navigation;
         return (
             <View style={styles.container}>
                 <List>
@@ -63,7 +65,7 @@ export default class Login extends Component {
                 <Button style={{ marginLeft: 8, marginRight: 8, marginTop: 8 }} type="primary">登　录</Button>
                 <View style={{ width: 100 + '%', flexDirection: 'row', paddingTop: 5 }}>
                     <Text onPress={self.showActionSheet} style={{ width: 50 + '%', paddingLeft: 8 }}>忘记密码？</Text>
-                    <Text style={{ width: 50 + '%', paddingRight: 8, textAlign: 'right' }}>新用户注册</Text>
+                    <Text onPress={() => navigate('Register')} style={{ width: 50 + '%', paddingRight: 8, textAlign: 'right' }}>新用户注册</Text>
                 </View>
 
             </View>
