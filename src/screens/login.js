@@ -10,7 +10,7 @@ export default class Login extends Component {
         headerTitleStyle: {
             alignSelf: 'center',
             fontSize: 18,
-            color:'#fff',
+            color: '#fff',
         }
         ,
         headerStyle: {
@@ -23,11 +23,44 @@ export default class Login extends Component {
     }
     constructor(props) {
         super(props);
-        this.state = { text: '' };
+        this.state = {
+            user: '',
+            userError: false,
+            password: '',
+            pwError: false
+        };
     }
-    log_in() {
+    userValidate = (user) => {
 
+        if (user.replace(/\s/g, '').length < 11) {
+            this.setState({
+                userError: true,
+            });
+        } else {
+            this.setState({
+                userError: false,
+            });
+        }
+        this.setState({
+            user,
+        });
     }
+    pwValidate = (pw) => {
+
+        if (pw.replace(/\s/g, '').length < 11) {
+            this.setState({
+                pwError: true,
+            });
+        } else {
+            this.setState({
+                pwError: false,
+            });
+        }
+        this.setState({
+            password: pw,
+        });
+    }
+
     showActionSheet = () => {
         const BUTTONS = ['找回密码', '短信验证码登录', '取消'];
         const { navigate } = this.props.navigation;
@@ -38,19 +71,19 @@ export default class Login extends Component {
             'data-seed': 'logId',
         },
             (buttonIndex) => {
-                
-               if(buttonIndex===0){return navigate('ForgetPassword')}
+
+                if (buttonIndex === 0) { return navigate('ForgetPassword') }
             });
     }
     //--------
-    login(){
-        
+    login() {
+        this.props.navigation.navigate('ChatScreen', { user: this.state.user })
     }
 
 
     render() {
         const self = this;
-
+        const { user, password, userError, pwError } = this.state;
         const { navigate } = this.props.navigation;
         return (
             <View style={styles.container}>
@@ -58,15 +91,20 @@ export default class Login extends Component {
                     <InputItem
                         clear
                         placeholder="QQ号/手机/邮箱"
-                        ref={el => this.autoFocusInst = el}
+                        error={userError}
+                        onChange={this.userValidate}
+                        value={user}
                     ></InputItem>
                     <InputItem
                         clear
                         placeholder="密码"
-                        ref={el => this.customFocusInst = el}
+                        error={pwError}
+                        onChange={this.pwValidate}
+                        type='password'
+                        value={password}
                     ></InputItem>
                 </List>
-                <Button onPress={this.login} style={{ marginLeft: 8, marginRight: 8, marginTop: 8 }} type="primary">登　录</Button>
+                <Button onClick={this.login.bind(self)} style={{ marginLeft: 8, marginRight: 8, marginTop: 8 }} type="primary">登　录</Button>
                 <View style={{ width: 100 + '%', flexDirection: 'row', paddingTop: 5 }}>
                     <Text onPress={self.showActionSheet} style={{ width: 50 + '%', paddingLeft: 8 }}>忘记密码？</Text>
                     <Text onPress={() => navigate('Register')} style={{ width: 50 + '%', paddingRight: 8, textAlign: 'right' }}>新用户注册</Text>
