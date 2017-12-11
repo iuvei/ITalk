@@ -1,19 +1,48 @@
-# ITalk
-一个基于react native的社交APP
+react-native init AwesomeProject
+cd AwesomeProject
+react-native run-android
 
-## 操作步骤
+#重大建议，所有命令使用yarn,不再使用npm命令
 
-1. 从github拉去代码后 在命令行执行 `npm install`
+npm install  => yarn install或yarn
+npm install --save [package] => yarn add [package]
+npm install --save-dev [package] => yarn add [package] --dev
+npm install --global [package] => yarn global add [package]
+npm uninstall --save [package] => yarn remove [package]
+npm uninstall --save-dev [package] => yarn remove [package]
 
-2. 启动安卓模拟器或数据线连接安卓手机
 
-3. npm install 结束后，执行 `react-native run-android`
+### 1. yarn start  只启动后台
+
+### 2. react-native run-android  启动后台，也启动页面
+
+### 3.react-devtools  启动调试工具
+
+dependencies 依赖包
+peer-dependencies 同等的依赖包
+bundled-dependencies 捆绑依赖包
+develop-dependencies 开发依赖包
+optional-dependencies 可选择的依赖包
 
 
-#### 注意事项
-
-可以先用：react-native start，然后打开浏览器看是否运行成功，
-而不要急着用 react-native run-android往手机安.
-因为有些坑 比如小米手机，需要在开发者选项中关掉那个miui优化才能安得成功。
+#### 日常报错
+- 
+`
+To resolve try the following:
+  1. Clear watchman watches: `watchman watch-del-all`.
+  2. Delete the `node_modules` folder: `rm -rf node_modules && npm install`.
+  3. Reset Metro Bundler cache: `rm -fr $TMPDIR/react-*` or `npm start -- --reset-cache`.
+`
+网上的解决
+`
+		"rc-start": "npm start -- --reset-cache",
+		"clean": "rm -rf $TMPDIR/react-* && watchman watch-del-all && npm cache clean",
+		"clean-start": "npm run clean && npm run rc-start",
+		"fresh-install": "rm -rf $TMPDIR/react-* && watchman watch-del-all && rm -rf ios/build/ModuleCache/* && rm -rf node_modules/ && npm cache clean && npm install",
+		"fresh-start" : "npm run fresh-install && npm run rc-start",
+		"tron": "node_modules/.bin/reactotron"
+`
+npm版本5 的清除缓存命令:npm cache verify
+之前的版本才是:npm cache clean
 
 
