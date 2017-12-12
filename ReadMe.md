@@ -46,3 +46,14 @@ npm版本5 的清除缓存命令:npm cache verify
 之前的版本才是:npm cache clean
 
 
+##### 清除项目缓存，重新编译
+My 50cents. Windows and Android version (from react-native root project)
+del %appdata%\Temp\react-native-* & cd android & gradlew clean & cd .. & del node_modules/ & npm cache clean --force & npm install & npm start -- --reset-cache
+
+or
+
+del %appdata%\Temp\react-native-* & cd android & gradlew clean & cd .. & del node_modules/ & npm cache clean --force & yarn install & react-native run-android
+
+
+
+
