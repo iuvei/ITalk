@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TextInput, Dimensions, Image, TouchableOpacity } from 'react-native';
+import {
+    View, Text, StyleSheet, TextInput, Alert,
+    Dimensions, Image, TouchableOpacity
+} from 'react-native';
 
 let totalWidth = Dimensions.get('window').width;
 let totalHeight = Dimensions.get('window').height;
@@ -9,7 +12,7 @@ let widthOfMargin = Dimensions.get('window').width * 0.05;
 
 class Index extends Component {
     static navigationOptions = {
-        title: '登陆'
+        header: null//隐藏导航栏
     }
     constructor(props) {
         super(props)
@@ -21,6 +24,7 @@ class Index extends Component {
         this.handleUserNameChange = this.handleUserNameChange.bind(this);
         this.handleUserPasswordChange = this.handleUserPasswordChange.bind(this);
         this.userLogin = this.userLogin.bind(this);
+        this.forgetPassword = this.forgetPassword.bind(this);
         this.userRegistered = this.userRegistered.bind(this);
     }
 
@@ -33,96 +37,126 @@ class Index extends Component {
     }
 
     userLogin() {
+        const { userName, userPassword } = this.state;
+        /*if (userName === "" || userPassword === "") {
+            Alert.alert(
+                '错误提示',
+                '用户名密码不能为空',
+                [{ text: '确定' }]
+            );
+        } else {
+            this.props.navigation.navigate('Welcome', { userName, userPassword });
+        }*/
+        this.props.navigation.navigate('Welcome', { userName, userPassword });
+    }
+
+    forgetPassword() {
 
     }
 
     userRegistered() {
-
+        this.props.navigation.navigate('Registered');
     }
 
     render() {
         return (
-            <View style={styles.container}>
-                <View style={styles.log}>
+            <View style={styles.loginView}>
+                <View style={styles.logoStyle}>
+                    <Image style={{ height: 200, width: 200 }} source={require('../../images/350_350.png')} />
+                </View>
+                <View style={{ marginTop: 80 }}>
+                    <View style={styles.textInputView}>
+                        <TextInput style={styles.textInput}
+                            placeholder='用户名'
+                            //autoFocus={true}
+                            underlineColorAndroid='transparent'
+                            onChangeText={this.handleUserNameChange} />
+                    </View>
+
+                    <View style={styles.textInputView}>
+                        <TextInput style={styles.textInput}
+                            placeholder='密码'
+                            secureTextEntry={true}
+                            underlineColorAndroid='transparent'
+                            onChangeText={this.handleUserPasswordChange} />
+                    </View>
+
+                    <TouchableOpacity
+                        style={styles.loginTextView}
+                        onPress={this.userLogin}>
+                        <View>
+                            <Text style={styles.loginText} >登陆</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <View style={styles.ViewForFootStyle}>
+                        <Text style={styles.textForFootStyle} onPress={this.forgetPassword}>忘记密码?</Text>
+                        <Text style={styles.textForFootStyle} onPress={this.userRegistered}>注册新账号</Text>
+                    </View>
 
                 </View>
-                <TextInput style={styles.textInputStyle}
-                    placeholder='用户名'
-                    autoFocus={true}
-                    onChangeText={this.handleUserNameChange} />
-
-                <TextInput style={styles.textInputStyle}
-                    placeholder='密码'
-                    secureTextEntry={true}
-                    onChangeText={this.handleUserPasswordChange} />
-                <TouchableOpacity
-                    onPress={this.userLogin}>
-                    <View style={styles.viewForLoginStyle}>
-                        <Text style={styles.loginButton}>登陆</Text>
-                    </View>
-
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                    onPress={this.userRegistered}>
-                    <View style={styles.viewForRegisteredStyle}>
-                        <Text style={styles.registeredButton} >新用户注册</Text>
-                    </View>
-
-                </TouchableOpacity>
-
-
             </View>
         );
     }
 }
 
+
 const styles = StyleSheet.create({
-    container: {
+    loginView: {
         flex: 1,
-        // justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white',
+        padding: 30,
+        backgroundColor: '#ffffff'
     },
-    icon: {
-        width: 20,
-        height: 20
+    logoStyle: {
+        flexDirection: 'row',
+        height: 100,
+        marginTop: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
-    log: {
-        width: totalWidth,
-        height: textSize * 3,
-        borderWidth: 3,
-        borderColor: 'black'
+    textInputView: {
+        marginTop: 10,
+        height: 50,
+        backgroundColor: '#fff',
+        borderRadius: 5,
+        borderWidth: 0.3,
+        borderColor: '#000',
+        flexDirection: 'column',
+        justifyContent: 'center',
+
     },
-    textInputStyle: {
-        height: textSize * 2.4,
-        width: textSize * 10,
-        fontSize: 14,
+    textInput: {
+        backgroundColor: '#fff',
+        height: 45,
+        margin: 18
     },
-    viewForLoginStyle: {
-        height: textSize * 1.4,
-        width: textSize * 10,
+    loginText: {
+        color: '#fff',
+        fontWeight: 'bold',
+        width: 30,
+    },
+    loginTextView: {
+        marginTop: 10,
+        height: 50,
+        backgroundColor: '#3281dd',
+        borderRadius: 5,
+        flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'gray',
-        borderRadius: 8,
     },
-    loginButton: {
-        fontSize: textSize,
-        color: 'white'
+    //
+    ViewForFootStyle: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 10
     },
-    viewForRegisteredStyle: {
-        width: textSize * 6,
-        height: textSize * 1.4,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'gray',
-        borderRadius: 8,
+    textForFootStyle: {
+        color: '#4A90E2',
+        textAlign: 'center',
     },
-    registeredButton: {
-        fontSize: textSize,
-        color: 'white'
-    },
+
+
+
+
 
 
 
@@ -130,3 +164,7 @@ const styles = StyleSheet.create({
 
 
 export default Index;
+
+/*
+
+*/

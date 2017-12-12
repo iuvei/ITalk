@@ -1,2 +1,5 @@
 export { default as Login } from './login/login.js'
 export { default as Registered } from './login/registered.js'
+export {default as Contact} from './welcome/contact'
+export {default as PersonalStatus} from './welcome/personalStatus'
+export {default as NewsList} from './welcome/news'
