@@ -1,9 +1,16 @@
 //import liraries
 import React, { Component } from 'react';
 import { View, Text, StyleSheet,Image,TouchableOpacity,ScrollView,ListView } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 // create a component
 class Index extends Component {
+    static navigationOptions = {
+        tabBarLabel: '动态',
+        tabBarIcon: ({ focused, tintColor }) => (
+            <Icon name="star" size={26}  color={focused ?"#4BC1D2" :"#ccc"} />
+        )
+    }
     render() {
         return (
             <View style={styles.container}>

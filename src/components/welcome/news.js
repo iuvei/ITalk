@@ -1,8 +1,8 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, ListView } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-const myIcon = (<Icon name="rocket" size={30} color="#900" />)
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, ListView,Picker } from 'react-native';
+import Icon from 'react-native-vector-icons/Entypo';
+
 // create a component
 /*
  <Image
@@ -14,8 +14,10 @@ class Index extends Component {
     static navigationOptions = {
         tabBarLabel: '消息',
         tabBarIcon: ({ focused, tintColor }) => (
-            <Icon name="rocket" size={30} color="#900" />
-        )
+            <Icon name="message" size={26} color={focused ? "#4BC1D2" : "#ccc"} />
+        ),
+        headerRight: <Icon name="add-to-list" size={26} color={"#ccc"} />,
+        headerLeft: <Icon name="add-to-list" size={26} color={"#ccc"} />,
     }
     constructor(props) {
         super(props)
@@ -23,6 +25,9 @@ class Index extends Component {
         this.state = {
 
         }
+    }
+    selectListItem(value){
+        console.log(value)
     }
 
     render() {
@@ -40,7 +45,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#2c3e50',
+        backgroundColor: '#F5FCFF',
     },
 });
 

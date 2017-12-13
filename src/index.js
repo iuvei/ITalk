@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { StackNavigator, DrawerNavigator, TabNavigator } from 'react-navigation'
-import { Login, Registered, Contact, PersonalStatus, NewsList } from './components'
+import { Login, Registered, Contact, PersonalStatus, NewsList,AddPage } from './components'
 
 const TabView = TabNavigator({
     NewsList: { screen: NewsList },
@@ -10,22 +10,25 @@ const TabView = TabNavigator({
     PersonalStatus: { screen: PersonalStatus }
 }, {
         tabBarOptions: {
-            activeTintColor: '#4BC1D2',
-            inactiveTintColor: '#000',
+            activeTintColor: '#4BC1D2',//标签激活时 天蓝色
+            inactiveTintColor: '#000',//标签非激活时 黑色
             showIcon: true,
             showLabel: true,
             upperCaseLabel: false,
-            pressColor: '#823453',
+            pressColor: '#823453',//按下时涟漪效果的颜色  紫红色
             pressOpacity: 0.8,
             style: {
-                backgroundColor: '#fff',
+                backgroundColor: '#fff',//白色
                 paddingBottom: 0,
                 borderTopWidth: 0.5,
-                borderTopColor: '#ccc',
+                borderTopColor: '#ccc',//灰色
+                borderWidth:1,
+                borderColor:'black'
+               
             },
             labelStyle: {
                 fontSize: 12,
-                margin: 1
+                //margin: 1
             },
             indicatorStyle: { height: 0 }, //android 中TabBar下面会显示一条线，高度设为 0 后就不显示线了
         },

@@ -57,3 +57,4 @@ del %appdata%\Temp\react-native-* & cd android & gradlew clean & cd .. & del nod
 
 
 
+react-native-vector-icons
