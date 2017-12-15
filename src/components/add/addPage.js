@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ListView, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, ListView, TouchableOpacity, Image, Picker } from 'react-native';
 
 // create a component
 class Index extends Component {
@@ -8,9 +8,10 @@ class Index extends Component {
         super(props)
 
         this.state = {
-            addPageDataSource: ListView.DataSource({
-                rowHashChanged: (oldRow, newState) => oldRow != newRow
-            })
+            addPageDataSource: new ListView.DataSource({
+                rowHasChanged: (oldRow, newRow) => oldRow !== newRow
+            }),
+            choice: '',
         }
         this.options = [
             { key: '1', name: '创建群聊', value: 'ceateGroup' },
@@ -20,6 +21,7 @@ class Index extends Component {
 
         ];
         this.renderListItem = this.renderListItem.bind(this);
+
 
     }
     componentWillMount() {
@@ -39,16 +41,23 @@ class Index extends Component {
     }
 
 
-    renderListItem(log, sectionID, RowID) {
+
+    renderListItem(log, sectionID, rowID) {
         return (
-            <TouchableOpacity onPress={this.props.selectListItem(log.value)}>
-                <View style={styles.secondRow}>
-                    <Image source={require('../../images/b1.jpg')} style={styles.moodstyle} />
+            <TouchableOpacity
+                onPress={() => this.props.selectLististItem(log.value)}
+            >
+                <View style={styles.ViewForAddPage}>
+
+                    <Image style={styles.moodStyle} source={require('../../images/b1.jpg')} />
+
                     <View style={styles.subViewInReader}>
-                        <Text>{log.name}</Text>
+                        <Text style={styles.textInReader}>
+                            {log.name}
+                        </Text>
+
                     </View>
                 </View>
-
             </TouchableOpacity>
         );
     }
@@ -58,27 +67,41 @@ class Index extends Component {
 
     render() {
         return (
+            <View style={styles.container}>
+                <ListView dataSource={this.state.addPageDataSource} renderRow={this.renderListItem}>
 
-            <Text>2333</Text>
+                </ListView>
+            </View>
 
         );
     }
 }
 /*
+  <Text>2333</Text>
   <ListView dataSource={this.state.addPageDataSource} renderRow={this.renderListItem}>
 
-                </ListView>
+   </ListView>
+
+                 <Image style={{ height: 26, width: 26, borderRadius: 50 }} source={require('../../images/b1.jpg')} />
 */
 
 // define your styles
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F5FCFF',
+        marginLeft: -150
+    },
     secondRow: {
+
         alignItems: 'center'
     },
     moodstyle: {
-        height: 30,
-        height: 30,
-        borderRadius: 30 * 1.6,
+        height: 100,
+        width: 100,
+        borderRadius: 5,
     },
     subViewInReader: {
         width: 50
@@ -87,7 +110,7 @@ const styles = StyleSheet.create({
         height: 20,
         fontSize: 14,
         margin: 2,
-        backgroundColor: '#000'
+        backgroundColor: '#fff'
     }
 });
 

@@ -1,8 +1,8 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, ListView,Picker } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, ListView, Picker } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
-
+import { AddPage } from '../index'
 // create a component
 /*
  <Image
@@ -26,27 +26,55 @@ class Index extends Component {
 
         }
     }
-    selectListItem(value){
+    selectLististItem(value) {
         console.log(value)
     }
 
     render() {
         return (
             <View style={styles.container}>
-                <Text>消息</Text>
+                <View style={styles.listItemStyle}>
+                    <Image style={{ width: 30, height: 30 }}
+                        source={require('../../images/b1.jpg')} />
+                    <View style={styles.ViewForTextStyle}>
+                    <Text>一段描述</Text>
+                    </View>
+                    
+                </View>
+
+
             </View>
         );
     }
 }
-
+/*
+ <AddPage />
+*/
 // define your styles
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
+        //justifyContent: 'center',
+        //alignItems: 'center',
         backgroundColor: '#F5FCFF',
+        borderWidth: 1,
+        borderColor: 'black',
+        margin: 5
     },
+    listItemStyle: {
+        borderWidth: 1,
+        borderColor: 'black',
+        flexDirection: 'row',
+        //textAlign: 'center'
+    },
+    ViewForTextStyle: {
+        height:30,
+        width:100,
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        borderWidth: 1,
+        borderColor: 'black',
+    }
 });
 
 //make this component available to the app
