@@ -2,7 +2,7 @@ react-native init AwesomeProject
 cd AwesomeProject
 react-native run-android
 
-#重大建议，所有命令使用yarn,不再使用npm命令
+# 重大建议，所有命令使用yarn,不再使用npm命令
 
 npm install  => yarn install或yarn
 npm install --save [package] => yarn add [package]
@@ -12,7 +12,7 @@ npm uninstall --save [package] => yarn remove [package]
 npm uninstall --save-dev [package] => yarn remove [package]
 
 
-### 1. yarn start  只启动后台
+###  1. yarn start  只启动后台
 
 ### 2. react-native run-android  启动后台，也启动页面
 

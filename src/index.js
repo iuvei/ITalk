@@ -1,8 +1,12 @@
 //import liraries
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { StackNavigator, DrawerNavigator, TabNavigator } from 'react-navigation'
-import { Login, Registered, Contact, PersonalStatus, NewsList,AddPage } from './components'
+import { StackNavigator, DrawerNavigator, TabNavigator, } from 'react-navigation'
+import {
+    Login, Registered, Contact,
+    PersonalStatus, NewsList, AddPage, PersonalInfo,
+    DrawTest
+} from './components'
 
 const TabView = TabNavigator({
     NewsList: { screen: NewsList },
@@ -22,9 +26,9 @@ const TabView = TabNavigator({
                 paddingBottom: 0,
                 borderTopWidth: 0.5,
                 borderTopColor: '#ccc',//灰色
-                borderWidth:1,
-                borderColor:'black'
-               
+                borderWidth: 1,
+                borderColor: 'black'
+
             },
             labelStyle: {
                 fontSize: 12,
@@ -41,17 +45,21 @@ const TabView = TabNavigator({
     });
 
 const StackView = StackNavigator({
-    Home: { screen: Login },
+    Login: { screen: Login },
     Registered: { screen: Registered },
-    Welcome: { screen: TabView },
+   Welcome: {screen: TabView,},
+    
 })
 
-
+const DrawerView = DrawerNavigator({
+    Home: {screen: StackView,},
+    PersonalInfo: { screen: PersonalInfo },
+})
 
 class Index extends Component {
     render() {
         return (
-            <StackView />
+            <DrawerView />
         );
     }
 }
