@@ -14,7 +14,7 @@ const TabView = TabNavigator({
     PersonalStatus: { screen: PersonalStatus }
 }, {
         tabBarOptions: {
-            activeTintColor: '#4BC1D2',//标签激活时 天蓝色
+            activeTintColor: '#3498DB',//标签激活时 天蓝色
             inactiveTintColor: '#000',//标签非激活时 黑色
             showIcon: true,
             showLabel: true,
@@ -49,6 +49,13 @@ const StackView = StackNavigator({
     Registered: { screen: Registered },
    Welcome: {screen: TabView,},
     
+}, {
+    initialRouteName: 'Login',
+    navigationOptions: {
+        //headerTintColor: 'white',
+        headerStyle: {backgroundColor: "#3498DB"},
+        headerTitleStyle: {alignSelf: 'center',color:'white'},
+    },
 })
 
 const DrawerView = DrawerNavigator({

@@ -8,7 +8,7 @@ class Index extends Component {
     static navigationOptions = {
         tabBarLabel: '动态',
         tabBarIcon: ({ focused, tintColor }) => (
-            <Icon name="star" size={26}  color={focused ?"#4BC1D2" :"#ccc"} />
+            <Icon name="star" size={26}  color={focused ?"#3498DB" :"#ccc"} />
         )
     }
     render() {

@@ -1,69 +1,43 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, ListView, Picker } from 'react-native';
-import Icon from 'react-native-vector-icons/Entypo';
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, ListView } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+
 import AddIcon from 'react-native-vector-icons/MaterialIcons';
-import { AddPage } from '../index'
+import { ContactsDataProvider } from '../../dataProvider'
 
-import { NewsDataProvider } from '../../dataProvider'
-
-/*
- <Image
-            source={focused ? require('../res/images/hot_hover.png') : require('../res/images/hot.png')}
-            style={{ width: 26, height: 26, tintColor: tintColor }}
-          />
-
-          <Text style={{fontSize:14,alignItems:'center',marginLeft:100}}>消息</Text>
-*/
 class Index extends Component {
-    static navigationOptions = ({ navigation, screenProps }) => ({
-        //tab栏标题
-        tabBarLabel: '消息',
-        //tab栏图标
+    static navigationOptions = {
+        tabBarLabel: '联系人',
         tabBarIcon: ({ focused, tintColor }) => (
-            <Icon name="message" size={26} color={focused ? "#3498DB" : "#ccc"} />
+            <Icon name="md-contacts" size={26} color={focused ? "#3498DB" : "#ccc"} />
         ),
         //标题栏
-        headerTitle: '消息',
+        headerTitle: '联系人',
         headerRight: <AddIcon name="add" size={40} color={"white"} style={{ marginRight: 3 }} />,
         headerLeft:
             <TouchableOpacity onPress={() => navigation.navigate('DrawerOpen')}>
                 <Image style={{ width: 40, height: 40, borderRadius: 15, marginLeft: 3 }} source={require('../../images/b8.jpg')} />
             </TouchableOpacity>,
-
-    })
+    }
     constructor(props) {
         super(props)
-        this.dp = new NewsDataProvider();
+        this.dp = new ContactsDataProvider();
         this.state = {
             dataSource: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }),
         }
-
     }
     componentWillMount() {
-        this.getList();
+        this.getList('firends');
     }
-    componentDidMount() {
-
-    }
-    componentWillReceiveProps(nextProps) {
-
-    }
-    getPeronalInfo() {
-        this.props.navigation.navigate('PersonalInfo');
-    }
-    getList() {
-        this.dp.getList().then((result) => {
-            if (Array.isArray(result)) {
-                this.setState({
-                    dataSource: this.state.dataSource.cloneWithRows(result),
-                })
-            } else {
-                this.setState({
-                    dataSource: this.state.dataSource.cloneWithRows([]),
-                })
-            }
-
-        })
+    renderHeader(log, sectionID, rowID) {
+        constructor.log(log, sectionID, rowID);
+        return (
+            <TouchableOpacity
+            onPress={() => this.props.selectLististItem(rowID)}
+        >
+        <Text>'标题'</Text>
+         </TouchableOpacity>
+        );
     }
     renderListItem(log, sectionID, rowID) {
         return (
@@ -81,14 +55,14 @@ class Index extends Component {
                                 {log.name}
                             </Text>
 
-                            <Text style={styles.textForTimeStyle}>2017-12-24</Text>
+
                         </View>
 
                         <View>
                             <Text style={styles.textForContentStyle}
                                 ellipsizeMode='tail'
                                 numberOfLines={1}>
-                                {log.content}
+                                {log.isOnline} {log.description}
                             </Text>
                         </View>
 
@@ -99,19 +73,28 @@ class Index extends Component {
         );
     }
 
-
+    //-------------
+    getList(groupId) {
+        this.dp.getList(groupId).then((result) => {
+            if (Array.isArray(result)) {
+                this.setState({ dataSource: this.state.dataSource.cloneWithRows(result) })
+            }
+        })
+    }
     render() {
         return (
             <View style={styles.container}>
                 <ListView
                     dataSource={this.state.dataSource}
                     renderRow={this.renderListItem}
+                    renderSectionHeader={this.renderHeader}
                 />
             </View>
         );
     }
 }
 
+// define your styles
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -138,19 +121,16 @@ const styles = StyleSheet.create({
         borderRadius: 20,
     },
     viewForTextFirstLine: {
-        width:330,
+        width: 330,
         flexDirection: 'row',//标题与时间  从左到右显示
-        justifyContent:'space-between'//
+        justifyContent: 'space-between'//
     },
     textFornameStyle: {
         fontSize: 14,//名称
         width: 100,
         color: 'black'
     },
-    textForTimeStyle: {
-        fontSize:12,//时间
-        color:'gray'
-    },
+
     textForContentStyle: {
         fontSize: 13,//内容
         width: 100,
@@ -159,4 +139,5 @@ const styles = StyleSheet.create({
     }
 });
 
+//make this component available to the app
 export default Index;
