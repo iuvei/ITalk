@@ -5,7 +5,8 @@ import { StackNavigator, DrawerNavigator, TabNavigator, } from 'react-navigation
 import {
     Login, Registered, Contact,
     PersonalStatus, NewsList, AddPage, PersonalInfo,
-    DrawTest
+    DrawTest, 
+    //ChatRoom,
 } from './components'
 
 const TabView = TabNavigator({
@@ -47,19 +48,20 @@ const TabView = TabNavigator({
 const StackView = StackNavigator({
     Login: { screen: Login },
     Registered: { screen: Registered },
-   Welcome: {screen: TabView,},
-    
+    Welcome: { screen: TabView, },
+    //ChatRoom: { screen: ChatRoom },
+
 }, {
-    initialRouteName: 'Login',
-    navigationOptions: {
-        //headerTintColor: 'white',
-        headerStyle: {backgroundColor: "#3498DB"},
-        headerTitleStyle: {alignSelf: 'center',color:'white'},
-    },
-})
+        initialRouteName: 'Login',
+        navigationOptions: {
+            //headerTintColor: 'white',
+            headerStyle: { backgroundColor: "#3498DB" },
+            headerTitleStyle: { alignSelf: 'center', color: 'white' },
+        },
+    })
 
 const DrawerView = DrawerNavigator({
-    Home: {screen: StackView,},
+    Home: { screen: StackView, },
     PersonalInfo: { screen: PersonalInfo },
 })
 

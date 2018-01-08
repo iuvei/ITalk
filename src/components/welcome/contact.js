@@ -71,6 +71,10 @@ class Index extends Component {
 
        
     }
+    //点击一个用户后跳转到聊天界面
+    selectLististItem(rowID){
+        this.props.navigation.navigate('ChatRoom', { rowID });
+    }
 
     //渲染标题
     renderSectionHeader(sectionData, sectionID) {
@@ -95,7 +99,7 @@ class Index extends Component {
         if (log === undefined || (rowID == 0 && log.hide)) return null;
         return (
             <TouchableOpacity
-                onPress={() => this.props.selectLististItem(rowID)}
+                onPress={() => this.selectLististItem(rowID)}
             >
                 <View style={styles.viewForListItemStyle}>
                     <Image source={log.header} style={styles.newsHeaderStyle} />

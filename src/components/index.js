@@ -6,3 +6,5 @@ export {default as NewsList} from './welcome/news'
 export {default as PersonalInfo} from './welcome/personalInfo'
 export {default as AddPage} from './add/addPage'
 export {default as DrawTest} from './drawTest'
+
+//export {default as ChatRoom} from './chat'
