@@ -56,5 +56,10 @@ del %appdata%\Temp\react-native-* & cd android & gradlew clean & cd .. & del nod
 
 
 
+###已使用的三方组件
 
-react-native-vector-icons
+1. react-native-vector-icons
+
+2. react-navigation
+
+3. react-native-gifted-chat

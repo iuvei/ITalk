@@ -6,7 +6,7 @@ import {
     Login, Registered, Contact,
     PersonalStatus, NewsList, AddPage, PersonalInfo,
     DrawTest, 
-    //ChatRoom,
+    ChatRoom,
 } from './components'
 
 const TabView = TabNavigator({
@@ -49,7 +49,7 @@ const StackView = StackNavigator({
     Login: { screen: Login },
     Registered: { screen: Registered },
     Welcome: { screen: TabView, },
-    //ChatRoom: { screen: ChatRoom },
+    ChatRoom: { screen: ChatRoom },
 
 }, {
         initialRouteName: 'Login',

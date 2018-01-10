@@ -47,20 +47,23 @@ class Index extends Component {
             dataBlob: [],
             sectionIdentities: [],
         }
-        //this.onPressSectionHeader=this.onPressSectionHeader.bind(this);
-        this.renderSectionHeader = this.renderSectionHeader.bind(this);
+        //用户分组渲染
+        this.renderSectionHeader=this.renderSectionHeader.bind(this);
+        //每一个用户---每一行数据渲染
+        this.renderListItem=this.renderListItem.bind(this);
+
+
     }
     componentWillMount() {
         this.getList('firends');
     }
-    //标题点击事件
+    //用户分组点击事件
     onPressSectionHeader(sectionID) {
-
         let { dataBlob, defaultDataBlob, dataSource, sectionIdentities } = this.state;
         let newdataBlob = this.state.dataBlob;
         for (let group in newdataBlob) {
             if (sectionID === group) {
-                 //newdataBlob[group] = newdataBlob[group].length === 0 ? defaultDataBlob[group] : [];
+                //newdataBlob[group] = newdataBlob[group].length === 0 ? defaultDataBlob[group] : [];
                 newdataBlob[sectionID][0].hide = !newdataBlob[sectionID][0].hide;
             }
         }
@@ -69,16 +72,15 @@ class Index extends Component {
             //dataSource: dataSource.cloneWithRowsAndSections(newdataBlob, sectionIdentities),
         })
 
-       
+
     }
     //点击一个用户后跳转到聊天界面
-    selectLististItem(rowID){
+    selectLististItem(rowID) {
         this.props.navigation.navigate('ChatRoom', { rowID });
     }
 
-    //渲染标题
+    //渲染所有用户分组
     renderSectionHeader(sectionData, sectionID) {
-
         return (
             <TouchableOpacity
                 onPress={this.onPressSectionHeader.bind(this, sectionID)}
@@ -90,16 +92,15 @@ class Index extends Component {
                     </View>
                     <Text style={{ lineHeight: 30 }}>5/20</Text>
                 </View>
-
             </TouchableOpacity>
         );
     }
-    //渲染每一行
+    //渲染每一行-每一个用户
     renderListItem(log, sectionID, rowID) {
         if (log === undefined || (rowID == 0 && log.hide)) return null;
         return (
             <TouchableOpacity
-                onPress={() => this.selectLististItem(rowID)}
+                onPress={this.selectLististItem.bind(this, rowID)}
             >
                 <View style={styles.viewForListItemStyle}>
                     <Image source={log.header} style={styles.newsHeaderStyle} />
@@ -164,7 +165,7 @@ class Index extends Component {
         return (
             <View style={styles.container}>
                 <ListView
-                    dataSource={this.state.dataSource.cloneWithRowsAndSections(dataBlob,sectionIdentities)}
+                    dataSource={this.state.dataSource.cloneWithRowsAndSections(dataBlob, sectionIdentities)}
                     renderRow={this.renderListItem}
                     renderSectionHeader={this.renderSectionHeader}
                 />
