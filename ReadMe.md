@@ -47,6 +47,9 @@ npm版本5 的清除缓存命令:npm cache verify
 
 
 ##### 清除项目缓存，重新编译
+
+"rm -rf $TMPDIR/react-*  的意思是清空C盘用户名-appdata-local-temp文件夹的东西
+
 My 50cents. Windows and Android version (from react-native root project)
 del %appdata%\Temp\react-native-* & cd android & gradlew clean & cd .. & del node_modules/ & npm cache clean --force & npm install & npm start -- --reset-cache
 

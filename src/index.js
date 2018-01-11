@@ -7,7 +7,7 @@ import {
     PersonalStatus, NewsList, AddPage, PersonalInfo,
     DrawTest, 
     ChatRoom,
-} from './components'
+} from './components'  
 
 const TabView = TabNavigator({
     NewsList: { screen: NewsList },

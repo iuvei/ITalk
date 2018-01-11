@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
 
+
+
 // create a component
 class Index extends Component {
   constructor(props) {
@@ -30,6 +32,24 @@ class Index extends Component {
         },
       ],
     });
+  }
+
+  componentDidMount() {
+    
+  }
+
+  doSomeThing() {
+    /*
+    var config = {
+      "sdk_appid": 1400061242,
+      "expire_after": 180 * 24 * 3600,
+      "private_key": "./keyfile/private_key",
+      "public_key": "./keyfile/public_key"
+    }
+
+    var sig = new sig.Sig(config);
+    console.log(sig.genSig("admin"));
+    */
   }
 
   onSend(messages = []) {

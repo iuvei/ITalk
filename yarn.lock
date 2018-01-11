@@ -3437,10 +3437,6 @@ react-native-lightbox@^0.7.0:
   dependencies:
     prop-types "^15.5.10"
 
-react-native-maps@^0.19.0:
-  version "0.19.0"
-  resolved "http://registry.npm.taobao.org/react-native-maps/download/react-native-maps-0.19.0.tgz#ce94fad1cf360e335cb4338a68c95f791e869074"
-
 react-native-parsed-text@^0.0.19:
   version "0.0.19"
   resolved "http://registry.npm.taobao.org/react-native-parsed-text/download/react-native-parsed-text-0.0.19.tgz#1aacca6f9ee82f939f60ef985df90c97bd55c45a"
