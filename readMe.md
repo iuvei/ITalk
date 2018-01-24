@@ -40,6 +40,24 @@ To resolve try the following:
   2. Delete the `node_modules` folder: `rm -rf node_modules && npm install`.
   3. Reset Metro Bundler cache: `rm -fr $TMPDIR/react-*` or `npm start -- --reset-cache`.
 `
+
+Could not install the app on the device, read the error above for details. 
+
+在IOS 上解决
+run chmod 755 android/gradlew inside your app root folder
+then run react-native run-android
+
+android解决
+1. cd android & gradlew clean
+
+2. npm cache verify
+如果还是报错则 执行下面的步骤
+1. cd android & gradlew clean
+2. 删除 node_modules
+3. npm cache verify
+4. yarn 
+5. 重启
+
 网上的解决
 `
 		"rc-start": "npm start -- --reset-cache",

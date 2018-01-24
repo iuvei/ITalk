@@ -41,7 +41,7 @@ export default class ContactsDataProvider {
         let result = [
             {
                 key:'1',
-                header: require('../images/b8.jpg'),
+                header: require('../assets/images/b8.jpg'),
                 name: '昵称1',
                 description: '一段描述1',
                 isOnline: '在线',
@@ -51,7 +51,7 @@ export default class ContactsDataProvider {
             },
             {
                 key:'2',
-                header: require('../images/b8.jpg'),
+                header: require('../assets/images/b8.jpg'),
                 name: '昵称2',
                 description: '一段描述2',
                 isOnline: '在线',

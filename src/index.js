@@ -1,12 +1,20 @@
-//import liraries
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { StackNavigator, DrawerNavigator, TabNavigator, } from 'react-navigation'
 
-import loginByUserName from './views/loginView/loginByUserName'
+import {
+    LoginByUserNameView,
+    /*
+    LoginByPhoneView,
+    RegistrationView,
+    ContactView,PersonalStatusView,NewsView,
+    PersonalInfoView,
+    ChatView,
+    */
+} from './views'
 
 const StackView = StackNavigator({
-    Home: { screen: loginByUserName }
+    Home: { screen: LoginByUserNameView }
 })
 
 class Index extends Component {

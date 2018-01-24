@@ -14,7 +14,7 @@ export default class NewsDataProvider {
     createNewsList() {
         let result = [];
         for (let i = 0; i < 15; i++) {
-            result.push({ name: '用户名' + i, header:  require('../images/b1.jpg'), content: '内容简介' + i });
+            result.push({ name: '用户名' + i, header:  require('../assets/images/b1.jpg'), content: '内容简介' + i });
         }
         return result;
     }

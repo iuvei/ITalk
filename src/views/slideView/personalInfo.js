@@ -8,7 +8,7 @@ class MyHomeScreen extends React.Component {
         drawerLabel: 'Home',
         drawerIcon: ({ tintColor }) => (
             <Image
-                source={require('../../images/b1.jpg')}
+                source={require('../../assets/images/b1.jpg')}
                 style={[styles.icon, { tintColor: tintColor }]}
             />
         ),
@@ -29,7 +29,7 @@ class MyNotificationsScreen extends React.Component {
         drawerLabel: 'Notifications',
         drawerIcon: ({ tintColor }) => (
             <Image
-                source={require('../../images/b4.jpg')}
+                source={require('../../assets/images/b4.jpg')}
                 style={[styles.icon, { tintColor: tintColor }]}
             />
         ),

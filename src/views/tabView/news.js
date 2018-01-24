@@ -27,7 +27,7 @@ class Index extends Component {
         headerRight: <AddIcon name="add" size={40} color={"white"} style={{ marginRight: 3 }} />,
         headerLeft:
             <TouchableOpacity onPress={() => navigation.navigate('DrawerOpen')}>
-                <Image style={{ width: 40, height: 40, borderRadius: 15, marginLeft: 3 }} source={require('../../images/b8.jpg')} />
+                <Image style={{ width: 40, height: 40, borderRadius: 15, marginLeft: 3 }} source={require('../../assets/images/b8.jpg')} />
             </TouchableOpacity>,
 
     })
