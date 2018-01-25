@@ -1,6 +1,5 @@
 export { default as LoginByUserNameView } from './loginView/loginByUserName'
 
-/*
 export { default as LoginByPhoneView } from './loginView/loginByPhone'
 
 export { default as RegistrationView } from './registrationView/registration'
@@ -12,4 +11,3 @@ export {default as NewsView} from './tabView/news'
 export {default as PersonalInfoView} from './slideView/personalInfo'
 
 export {default as ChatView} from './chatView'
-*/
